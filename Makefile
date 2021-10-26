@@ -1,5 +1,5 @@
-py_dirs := simple_programming_problems
-py_files := $(wildcard simple_programming_problems/*.py)
+py_dirs := programming_practice_problems
+py_files := $(wildcard programming_practice_problems/*.py)
 
 .PHONY: fmt
 fmt: env_ok
