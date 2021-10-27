@@ -28,12 +28,20 @@ def while_sum(elements: List[Any]) -> int:
     return sum
 
 
-def recursion_sum(elements: List[Any], sum: int = 0) -> int:
+def recursive_sum(elements: List[int]) -> int:
+
+    if elements == []:
+        return 0
+    else:
+        return elements[0] + recursive_sum(elements[1:])
+
+
+def tail_recursive_sum(elements: List[Any], sum: int = 0) -> int:
     numbers: List[int] = to_int_list(elements)
 
     if len(numbers) > 0:
         sum = sum + numbers.pop()
-        return recursion_sum(numbers, sum)
+        return tail_recursive_sum(numbers, sum)
     else:
         return sum
 
@@ -55,5 +63,8 @@ class Test(unittest.TestCase):
     def test_while_sum(self):
         self.assertEqual(9, while_sum([2, 3, "a", 4]))
 
-    def test_recursion_sum(self):
-        self.assertEqual(9, recursion_sum([2, 3, "a", 4]))
+    def test_tail_recursive_sum(self):
+        self.assertEqual(9, tail_recursive_sum([2, 3, "a", 4]))
+
+    def test_recursive_sum(self):
+        self.assertEqual(9, recursive_sum([2, 3, 4]))
