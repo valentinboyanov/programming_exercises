@@ -69,8 +69,20 @@ def merge_sort(elements: List[int]) -> List[int]:
 
 
 def quick_sort(elements: List[int]) -> List[int]:
+    if len(elements) < 2:
+        return elements
 
-    return elements
+    right: List[int] = []
+    left: List[int] = []
+    pivot: int = elements.pop()
+
+    for e in elements:
+        if e > pivot:
+            right.append(e)
+        else:
+            left.append(e)
+
+    return quick_sort(left) + [pivot] + quick_sort(right)
 
 
 class Test(unittest.TestCase):
@@ -88,3 +100,8 @@ class Test(unittest.TestCase):
         self.assertEqual([1, 2, 3], merge_sort([2, 1, 3]))
         self.assertEqual([1, 2, 5, 6, 10], merge_sort([2, 5, 6, 10, 1]))
         self.assertEqual([1, 2, 5, 5, 6, 10], merge_sort([2, 5, 5, 6, 10, 1]))
+
+    def test_quick_sort(self):
+        self.assertEqual([1, 2, 3], quick_sort([2, 1, 3]))
+        self.assertEqual([1, 2, 5, 6, 10], quick_sort([2, 5, 6, 10, 1]))
+        self.assertEqual([1, 2, 5, 5, 6, 10], quick_sort([2, 5, 5, 6, 10, 1]))
