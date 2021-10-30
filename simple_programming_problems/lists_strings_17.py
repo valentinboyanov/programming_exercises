@@ -1,3 +1,4 @@
+import math
 import unittest
 from typing import List
 
@@ -85,6 +86,22 @@ def quick_sort(elements: List[int]) -> List[int]:
     return quick_sort(left) + [pivot] + quick_sort(right)
 
 
+def stooge_sort(elements: List[int], first=0, last=None) -> List[int]:
+    if last == None:
+        last = len(elements) - 1
+
+    if elements[first] > elements[last]:
+        elements[first], elements[last] = elements[last], elements[first]
+
+    if (last - first) > 1:
+        t = math.floor((last - first + 1) / 3)
+        stooge_sort(elements, first, last - t)
+        stooge_sort(elements, first + t, last)
+        stooge_sort(elements, first, last - t)
+
+    return elements
+
+
 class Test(unittest.TestCase):
     def test_selection_sort(self):
         self.assertEqual([1, 2, 3], selection_sort([2, 1, 3]))
@@ -105,3 +122,8 @@ class Test(unittest.TestCase):
         self.assertEqual([1, 2, 3], quick_sort([2, 1, 3]))
         self.assertEqual([1, 2, 5, 6, 10], quick_sort([2, 5, 6, 10, 1]))
         self.assertEqual([1, 2, 5, 5, 6, 10], quick_sort([2, 5, 5, 6, 10, 1]))
+
+    def test_stooge_sort(self):
+        self.assertEqual([1, 2, 3], stooge_sort([2, 1, 3]))
+        self.assertEqual([1, 2, 5, 6, 10], stooge_sort([2, 5, 6, 10, 1]))
+        self.assertEqual([1, 2, 5, 5, 6, 10], stooge_sort([2, 5, 5, 6, 10, 1]))
