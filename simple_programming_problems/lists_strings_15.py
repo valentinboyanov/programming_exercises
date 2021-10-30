@@ -31,6 +31,29 @@ def multiply(a: List[int], b: List[int]) -> List[int]:
     return to_list(number_a * number_b)
 
 
+def karatsuba_multiply(a: List[int], b: List[int]) -> List[int]:
+    base = 10
+    m = 2
+    n = min(len(a), len(b))
+
+    if n > m:
+        a1 = to_int(a[:-m])
+        a0 = to_int(a[-m:])
+
+        b1 = to_int(b[:-m])
+        b0 = to_int(b[-m:])
+
+        z2 = a1 * b1
+        z1 = (a1 * b0) + (a0 * b1)
+        z0 = a0 * b0
+
+        result = z2 * (base ** (2 * m)) + z1 * (base ** m) + z0
+
+        return to_list(result)
+    else:
+        return to_list(to_int(a) * to_int(b))
+
+
 def to_int(digits: List[int]) -> int:
     text_digits = [str(n) for n in digits]
     text = "".join(text_digits)
@@ -60,3 +83,11 @@ class Test(unittest.TestCase):
     def test_multiply(self):
         self.assertEqual([1, 0, 0], multiply([1, 0], [1, 0]))
         self.assertEqual([3, 6], multiply([1, 2], [3]))
+
+    def test_karatsuba_multiply(self):
+        self.assertEqual([1, 0, 0], karatsuba_multiply([1, 0], [1, 0]))
+        self.assertEqual([3, 6], karatsuba_multiply([1, 2], [3]))
+        self.assertEqual([5, 6, 0, 8, 8], karatsuba_multiply([1, 2, 3], [4, 5, 6]))
+        self.assertEqual(
+            [7, 0, 0, 6, 6, 5, 2], karatsuba_multiply([1, 2, 3, 4], [5, 6, 7, 8])
+        )
