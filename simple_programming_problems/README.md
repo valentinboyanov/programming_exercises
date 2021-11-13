@@ -4,7 +4,6 @@ Solutions of Adrian Neumann's [Simple programming problems](simple_programming_p
 
 ## Check solutions
 
-Run tests:
 ```
 make test
 ```

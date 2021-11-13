@@ -4,7 +4,6 @@ Solutions of Dr. John Dalbey's [Programming Practice Problems](http://users.csc.
 
 ## Check solutions
 
-Run tests:
 ```
 make test
 ```
