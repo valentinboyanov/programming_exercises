@@ -48,7 +48,7 @@ class Test(unittest.TestCase):
 
         with patch("sys.stdout", new_callable=io.StringIO) as mocked_output:
             on_all(twenty_numbers, print_perfect_square)
-            self.assertEquals(expected_output, mocked_output.getvalue())
+            self.assertEqual(expected_output, mocked_output.getvalue())
 
 
 if __name__ == "__main__":
