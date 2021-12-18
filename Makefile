@@ -1,32 +1,8 @@
-py_dirs := simple_programming_problems
-py_files := $(wildcard simple_programming_problems/*.py)
-
-.PHONY: fmt
-fmt: env_ok
-	env/bin/isort -sp .isort.cfg $(py_files)
-	env/bin/black $(py_files)
-
 .PHONY: test
-test: check
-	env/bin/python -m unittest discover $(py_dirs) -p "*.py" -v
+test: test_simple_programming_problems test_programming_practice_problems
 
-.PHONY: check
-check: env_ok
-	env/bin/python -m mypy \
-		--no-implicit-optional \
-		--check-untyped-defs \
-		--ignore-missing-imports \
-		$(py_dirs)
-	env/bin/python -m flake8 --select F $(py_dirs)
-	env/bin/isort --sp .isort.cfg --check $(py_files)
-	env/bin/black --check $(py_files)
+test_simple_programming_problems:
+	cd simple_programming_problems && $(MAKE) test
 
-env_ok: requirements.txt
-	rm -fr env env_ok
-	python3 -m venv env
-	env/bin/pip install --upgrade pip
-	env/bin/pip install -r requirements.txt
-	touch env_ok
-
-clean:
-	rm -fr env env_ok
+test_programming_practice_problems:
+	cd programming_practice_problems && $(MAKE) test
