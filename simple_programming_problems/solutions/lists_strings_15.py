@@ -47,7 +47,7 @@ def karatsuba_multiply(a: List[int], b: List[int]) -> List[int]:
         z1 = (a1 * b0) + (a0 * b1)
         z0 = a0 * b0
 
-        result = z2 * (base ** (2 * m)) + z1 * (base ** m) + z0
+        result = z2 * (base ** (2 * m)) + z1 * (base**m) + z0
 
         return to_list(result)
     else:
