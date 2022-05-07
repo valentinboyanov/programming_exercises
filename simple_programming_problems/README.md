@@ -1,10 +1,6 @@
 # Overview
 
-<<<<<<< HEAD
 Solutions of Adrian Neumann's [Simple programming problems](https://adriann.github.io/programming_problems.html).
-=======
-Solutions of Adrian Neumann's [Simple programming problems](simple_programming_problems).
->>>>>>> main
 
 ## Check solutions
 
