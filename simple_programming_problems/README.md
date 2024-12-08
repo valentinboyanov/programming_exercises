@@ -1,6 +1,6 @@
 # Overview
 
-Solutions of Adrian Neumann's [Simple programming problems](https://adriann.github.io/programming_problems.html).
+Solutions in Python to some of Adrian Neumann's [Simple programming problems](https://adriann.github.io/programming_problems.html).
 
 ## Check solutions
 
