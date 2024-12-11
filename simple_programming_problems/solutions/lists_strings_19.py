@@ -1,22 +1,31 @@
-import io
-import unittest
-from typing import List
-from unittest.mock import patch
+"""
+19. Write a function that takes a list of strings an prints them,
+one per line, in a rectangular frame. For example
+the list ["Hello", "World", "in", "a", "frame"] gets printed as:
 
-# 19. Write a function that takes a list of strings an prints them,
-# one per line, in a rectangular frame. For example
-# the list ["Hello", "World", "in", "a", "frame"] gets printed as:
-#
-# *********
-# * Hello *
-# * World *
-# * in    *
-# * a     *
-# * frame *
-# *********
+Frame printing
+>>> rectangular_frame(["Hello", "World", "in", "a", "frame"])
+*********
+* Hello *
+* World *
+* in    *
+* a     *
+* frame *
+*********
+"""
+
+import doctest
+from typing import List
 
 
 def rectangular_frame(strings: List[str]) -> None:
+    """
+    >>> rectangular_frame(["Hello"])
+    *********
+    * Hello *
+    *********
+    """
+
     lines: List[str] = []
     content_width: int = max_element_len(strings)
 
@@ -31,12 +40,16 @@ def rectangular_frame(strings: List[str]) -> None:
 
     lines.append(solid_line)
 
-    print()
     for l in lines:
         print(l)
 
 
 def max_element_len(strings: List[str]) -> int:
+    """
+    >>> max_element_len(["Hello", "World"])
+    5
+    """
+
     max: int = 0
 
     for s in strings:
@@ -47,6 +60,11 @@ def max_element_len(strings: List[str]) -> int:
 
 
 def character_string(size: int, character: str) -> str:
+    """
+    >>> character_string(3, "*")
+    '***'
+    """
+
     characters: List[str] = []
 
     for _ in range(size):
@@ -56,6 +74,10 @@ def character_string(size: int, character: str) -> str:
 
 
 def line(size: int, body: str, border_left: str, border_right: str) -> str:
+    """
+    >>> line(10, "Hello", "* ", " *")
+    '* Hello      *'
+    """
     spaces_to_add = size - len(body)
     spaces = [" " for _ in range(spaces_to_add)]
     body_with_spaces = "{0}{1}".format(body, "".join(spaces))
@@ -63,18 +85,5 @@ def line(size: int, body: str, border_left: str, border_right: str) -> str:
     return border_left + body_with_spaces + border_right
 
 
-class Test(unittest.TestCase):
-    def test_frame_printing(self):
-        expected_output: str = """
-*********
-* Hello *
-* World *
-* in    *
-* a     *
-* frame *
-*********
-"""
-
-        with patch("sys.stdout", new_callable=io.StringIO) as mocked_out:
-            rectangular_frame(["Hello", "World", "in", "a", "frame"])
-            self.assertEqual(expected_output, mocked_out.getvalue())
+if __name__ == "__main__":
+    doctest.testmod()
