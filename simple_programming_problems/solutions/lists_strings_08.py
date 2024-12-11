@@ -29,7 +29,6 @@ arguments.)
 361
 """
 
-import doctest
 from typing import Any, List
 
 
@@ -54,4 +53,6 @@ def print_perfect_square(number: int) -> None:
 
 
 if __name__ == "__main__":
+    import doctest
+
     doctest.testmod()

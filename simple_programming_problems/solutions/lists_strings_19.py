@@ -14,7 +14,6 @@ Frame printing
 *********
 """
 
-import doctest
 from typing import List
 
 
@@ -86,4 +85,6 @@ def line(size: int, body: str, border_left: str, border_right: str) -> str:
 
 
 if __name__ == "__main__":
+    import doctest
+
     doctest.testmod()
