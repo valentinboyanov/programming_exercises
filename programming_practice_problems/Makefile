@@ -9,6 +9,7 @@ fmt: env_ok
 .PHONY: test
 test: check
 	env/bin/python -m unittest discover $(py_dirs) -p "*.py" -v
+	env/bin/python -m doctest solutions/*.py -v
 
 .PHONY: check
 check: env_ok
