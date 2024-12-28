@@ -1,6 +1,6 @@
 # Overview
 
-Solutions of Dr. John Dalbey's [Programming Practice Problems](http://users.csc.calpoly.edu/~jdalbey/103/Projects/ProgrammingPractice.html).
+Solutions in Python to some of Dr. John Dalbey's [Programming Practice Problems](http://users.csc.calpoly.edu/~jdalbey/103/Projects/ProgrammingPractice.html).
 
 ## Check solutions
 

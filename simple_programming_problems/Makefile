@@ -3,12 +3,13 @@ py_files := $(wildcard solutions/*.py)
 
 .PHONY: fmt
 fmt: env_ok
-	env/bin/isort -sp .isort.cfg $(py_files)
+	env/bin/isort --sp .isort.cfg $(py_files)
 	env/bin/black $(py_files)
 
 .PHONY: test
 test: check
 	env/bin/python -m unittest discover $(py_dirs) -p "*.py" -v
+	env/bin/python -m doctest solutions/*.py -v
 
 .PHONY: check
 check: env_ok

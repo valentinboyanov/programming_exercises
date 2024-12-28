@@ -1,13 +1,8 @@
 # Overview
 
-This is the place where I'm working on python programming exercises.
+Solutions to programming exercises recommended by my friend [@miguelsimon](https://github.com/miguelsimon).
 
-
-- [simple_programming_problems](./simple_programming_problems): hosts solutions of Adrian Neumann's [Simple programming problems](simple_programming_problems)
-- [programming_practice_problems](./programming_practice_problems): hosts solutions of Dr. John Dalbey's [Programming Practice Problems](http://users.csc.calpoly.edu/~jdalbey/103/Projects/ProgrammingPractice.html)
-
-
-## Check solutions
-```
-make test
-```
+- [Simple Programming Problems](https://adriann.github.io/programming_problems.html) by Adrian Neumann:
+    - [solutions in Python](./simple_programming_problems)
+- [Programming Practice Problems](http://users.csc.calpoly.edu/~jdalbey/103/Projects/ProgrammingPractice.html) by Dr. John Dalbey:
+   - [solutions in Python](./programming_practice_problems)
